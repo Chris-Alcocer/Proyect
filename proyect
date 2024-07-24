@@ -1,0 +1,233 @@
+JUEGO DE AVENTURA DE TEXTO
+bandit0@bandit:~$ cd /tmp
+bandit0@bandit:/tmp$ cd /proyecto
+bandit0@bandit:/tmp$ cd proyecto
+bandit0@bandit:/tmp/proyecto$ mkdir proyecto_menu
+bandit0@bandit:/tmp/proyecto$ ls
+bandit0@bandit:/tmp/proyecto$ cd proyecto_menu
+bandit0@bandit:/tmp/proyecto/proyecto_menu$ vim juego.sh
+______________________________________________________________________
+CODIGO DEL JUEGO DE TEXTO
+#!/bin/bash
+
+# Variables del juego
+nombre_jugador=""
+salud_jugador=100
+inventario=""
+experiencia_jugador=0
+nivel_jugador=1
+
+# Función para iniciar el juego
+function iniciar_juego() {
+  echo "¡Bienvenido a la aventura de texto!"
+  read -p "Introduce tu nombre: " nombre_jugador
+  echo "Hola, $nombre_jugador. ¡Comienza tu aventura!"
+}
+
+# Función para mostrar el estado del jugador
+function mostrar_estado() {
+  echo "Tu salud: $salud_jugador"
+  echo "Inventario: $inventario"
+  echo "Experiencia: $experiencia_jugador"
+  echo "Nivel: $nivel_jugador"
+}
+
+# Función para manejar los encuentros
+function encuentro() {
+  # Genera un tipo de encuentro aleatorio
+  tipo_encuentro=$((RANDOM % 5 + 1))
+  case $tipo_encuentro in
+    1)
+      # Encuentro con enemigo
+      echo "¡Un enemigo te ataca!"
+      # Implementa lógica de batalla
+      enemigo_salud=50
+      while [ $salud_jugador -gt 0 ] && [ $enemigo_salud -gt 0 ]; do
+        echo "Tu salud: $salud_jugador"
+        echo "Enemigo salud: $enemigo_salud"
+        read -p "Atacar (1) o huir (2): " opcion
+        case $opcion in
+          1)
+            enemigo_salud=$((enemigo_salud - 10))
+            salud_jugador=$((salud_jugador - 5))
+            ;;
+          2)
+            echo "Huiste del enemigo."
+            return
+            ;;
+        esac
+      done
+      if [ $salud_jugador -gt 0 ]; then
+        experiencia_jugador=$((experiencia_jugador + 10))
+        if [ $experiencia_jugador -ge 100 ]; then
+          nivel_jugador=$((nivel_jugador + 1))
+          experiencia_jugador=0
+        fi
+      else
+        echo "¡Has muerto! Game over."
+        exit
+      fi
+      ;;
+    2)
+      # Encuentro con tesoro
+      echo "¡Has encontrado un tesoro!"
+      inventario+="oro "
+      ;;
+    3)
+      # Encuentro con evento
+      echo "Te encuentras con un evento inesperado."
+      # Implementa lógica del evento
+      ;;
+    4)
+      # Encuentro con aliado
+      echo "¡Has encontrado un aliado!"
+      # Implementa lógica del aliado
+      ;;
+    5)
+      # Encuentro con puzzle
+      echo "Te encuentras con un puzzle."
+      # Implementa lógica del puzzle
+      ;;
+  esac
+}
+
+# Inicia el juego
+iniciar_juego
+
+# Bucle principal del juego
+while true; do
+  mostrar_estado
+  echo "Elige una acción:"
+  echo "1. Avanzar"
+  echo "2. Revisar inventario"
+  echo "3. Salir"
+  read -p "Tu elección: " opcion
+  case $opcion in
+    1)
+      # Avanzar
+      echo "Avanzas por el camino..."
+      encuentro
+      ;;
+    2)
+      # Revisar inventario
+      echo "Tu inventario: $inventario"
+      ;;
+    3)
+      # Salir
+      echo "¡Gracias por jugar!"
+      exit
+      ;;
+    *)
+      # Opción inválida
+      echo "Opción inválida. Inténtalo de nuevo."
+      ;;
+  esac
+done
+_____________________________________________________________
+bandit0@bandit:/tmp/proyecto/proyecto_menu$ chmod +x juego.sh
+bandit0@bandit:/tmp/proyecto/proyecto_menu$ ls
+bandit0@bandit:/tmp/proyecto/proyecto_menu$ ./menu.sh
+_____________________________________________________________
+EJECUCION DEL JUEGO
+¡Bienvenido a la aventura de texto!
+Introduce tu nombre: Christian
+Hola, Christian. ¡Comienza tu aventura!
+Tu salud: 100
+Inventario: 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Has encontrado un aliado!
+Tu salud: 100
+Inventario: 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Has encontrado un aliado!
+Tu salud: 100
+Inventario: 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: Opción inválida. Inténtalo de nuevo.
+Tu salud: 100
+Inventario: 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Has encontrado un aliado!
+Tu salud: 100
+Inventario: 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Has encontrado un tesoro!
+Tu salud: 100
+Inventario: oro 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 2
+Tu inventario: oro 
+Tu salud: 100
+Inventario: oro 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Un enemigo te ataca!
+Tu salud: 100
+Enemigo salud: 50
+Atacar (1) o huir (2): 1
+Tu salud: 95
+Enemigo salud: 40
+Atacar (1) o huir (2): 1
+Tu salud: 90
+Enemigo salud: 30
+Atacar (1) o huir (2): 1
+Tu salud: 85
+Enemigo salud: 20
+Atacar (1) o huir (2): 1
+Tu salud: 80
+Enemigo salud: 10
+Atacar (1) o huir (2): 1
+Tu salud: 75
+Inventario: oro 
+Experiencia: 10
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 3
+¡Gracias por jugar!
