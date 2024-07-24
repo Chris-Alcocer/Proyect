@@ -1,0 +1,228 @@
+SSH to your machine from anywhere with the SSH client running directly in your browser.
+
+WebSSH is SSH/SFTP client built on golang's SSH and SFTP library, compiled to Web Assembly to allow you to connect to your machine directly from your browser.
+No credentials or other plain text information is shared with our servers. Our servers only tunneling the packets from your browser to the machine you connect.They see only the same information that is visible for any router or other computer on the network when you use OpenSSH or other command line client.
+
+Just fill out the connection information and click connect to initiate the SSH session, once the remote hosts answers a pop up will show you the fingerprint of the server key and you can decide whether you want to continue with the connection.After successfully connecting you can just type your command into this Xterm.js console or browse/manage your files in the filemanager opens below the console.
+
+Source code available on github: https://github.com/hullarb/ssheasy
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+bandit0@bandit:~$ cd /tmp
+bandit0@bandit:/tmp$ cd proyecto
+bandit0@bandit:/tmp/proyecto$ cd proyecto_menu
+bandit0@bandit:/tmp/proyecto/proyecto_menu$ ls
+1234  1234.pub  [32;1mjuego.sh[0m  yes  yes.pub
+bandit0@bandit:/tmp/proyecto/proyecto_menu$ vim juego.sh
+bandit0@bandit:/tmp/proyecto/proyecto_menu$ ./juego.sh
+¡Bienvenido a la aventura de texto!
+Introduce tu nombre: Christian
+Hola, Christian. ¡Comienza tu aventura!
+Tu salud: 100
+Inventario: 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+Te encuentras con un evento inesperado.
+Tu salud: 100
+Inventario: 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Has encontrado un aliado!
+Tu salud: 100
+Inventario: 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Has encontrado un tesoro!
+Tu salud: 100
+Inventario: oro 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+Te encuentras con un evento inesperado.
+Tu salud: 100
+Inventario: oro 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+Te encuentras con un evento inesperado.
+Tu salud: 100
+Inventario: oro 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+Te encuentras con un evento inesperado.
+Tu salud: 100
+Inventario: oro 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+Te encuentras con un evento inesperado.
+Tu salud: 100
+Inventario: oro 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 2
+Tu inventario: oro 
+Tu salud: 100
+Inventario: oro 
+Experiencia: 0
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Un enemigo te ataca!
+Tu salud: 100
+Enemigo salud: 50
+Atacar (1) o huir (2): 1
+Tu salud: 95
+Enemigo salud: 40
+Atacar (1) o huir (2): 1
+Tu salud: 90
+Enemigo salud: 30
+Atacar (1) o huir (2): 1
+Tu salud: 85
+Enemigo salud: 20
+Atacar (1) o huir (2): 1
+Tu salud: 80
+Enemigo salud: 10
+Atacar (1) o huir (2): 1
+Tu salud: 75
+Inventario: oro 
+Experiencia: 10
+Nivel: 1
+Elige una acción:
+1. Avanzar
+2. Revisar inventario
+3. Salir
+Tu elección: 1
+Avanzas por el camino...
+¡Un enemigo te ataca!
+Tu salud: 75
+Enemigo salud: 50
+Atacar (1) o huir (2): 
