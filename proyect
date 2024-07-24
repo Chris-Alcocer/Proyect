@@ -10,21 +10,18 @@ ______________________________________________________________________
 CODIGO DEL JUEGO DE TEXTO
 #!/bin/bash
 
-# Variables del juego
 nombre_jugador=""
 salud_jugador=100
 inventario=""
 experiencia_jugador=0
 nivel_jugador=1
 
-# Función para iniciar el juego
 function iniciar_juego() {
   echo "¡Bienvenido a la aventura de texto!"
   read -p "Introduce tu nombre: " nombre_jugador
   echo "Hola, $nombre_jugador. ¡Comienza tu aventura!"
 }
 
-# Función para mostrar el estado del jugador
 function mostrar_estado() {
   echo "Tu salud: $salud_jugador"
   echo "Inventario: $inventario"
@@ -32,23 +29,19 @@ function mostrar_estado() {
   echo "Nivel: $nivel_jugador"
 }
 
-# Función para manejar los encuentros
 function encuentro() {
-  # Genera un tipo de encuentro aleatorio
   tipo_encuentro=$((RANDOM % 5 + 1))
   case $tipo_encuentro in
     1)
-      # Encuentro con enemigo
       echo "¡Un enemigo te ataca!"
-      # Implementa lógica de batalla
       enemigo_salud=50
       while [ $salud_jugador -gt 0 ] && [ $enemigo_salud -gt 0 ]; do
         echo "Tu salud: $salud_jugador"
         echo "Enemigo salud: $enemigo_salud"
-        read -p "Atacar (1) o huir (2): " opcion
+        read -p "Atacar (1) o Huir (2): " opcion
         case $opcion in
           1)
-            enemigo_salud=$((enemigo_salud - 10))
+            enemigo_salud=$((enemigo_salud - 7))
             salud_jugador=$((salud_jugador - 5))
             ;;
           2)
@@ -69,19 +62,14 @@ function encuentro() {
       fi
       ;;
     2)
-      # Encuentro con tesoro
       echo "¡Has encontrado un tesoro!"
       inventario+="oro "
       ;;
     3)
-      # Encuentro con evento
       echo "Te encuentras con un evento inesperado."
-      # Implementa lógica del evento
       ;;
     4)
-      # Encuentro con aliado
       echo "¡Has encontrado un aliado!"
-      # Implementa lógica del aliado
       ;;
     5)
       # Encuentro con puzzle
@@ -91,10 +79,8 @@ function encuentro() {
   esac
 }
 
-# Inicia el juego
 iniciar_juego
 
-# Bucle principal del juego
 while true; do
   mostrar_estado
   echo "Elige una acción:"
@@ -104,21 +90,17 @@ while true; do
   read -p "Tu elección: " opcion
   case $opcion in
     1)
-      # Avanzar
       echo "Avanzas por el camino..."
       encuentro
       ;;
     2)
-      # Revisar inventario
       echo "Tu inventario: $inventario"
       ;;
     3)
-      # Salir
       echo "¡Gracias por jugar!"
       exit
       ;;
     *)
-      # Opción inválida
       echo "Opción inválida. Inténtalo de nuevo."
       ;;
   esac
