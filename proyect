@@ -108,7 +108,7 @@ done
 _____________________________________________________________
 bandit0@bandit:/tmp/proyecto/proyecto_menu$ chmod +x juego.sh
 bandit0@bandit:/tmp/proyecto/proyecto_menu$ ls
-bandit0@bandit:/tmp/proyecto/proyecto_menu$ ./menu.sh
+bandit0@bandit:/tmp/proyecto/proyecto_menu$ ./juego.sh
 _____________________________________________________________
 EJECUCION DEL JUEGO
 ¡Bienvenido a la aventura de texto!
