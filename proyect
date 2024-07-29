@@ -7,7 +7,7 @@ bandit0@bandit:/tmp/proyecto$ ls
 bandit0@bandit:/tmp/proyecto$ cd proyecto_menu
 bandit0@bandit:/tmp/proyecto/proyecto_menu$ vim juego.sh
 ______________________________________________________________________
-CODIGO DEL JUEGO DE TEXTO
+CODIGO DEL JUEGO DE AVENTURA(TEXTO)
 #!/bin/bash
 
 nombre_jugador=""
@@ -80,7 +80,6 @@ function encuentro() {
 }
 
 iniciar_juego
-
 while true; do
   mostrar_estado
   echo "Elige una acción:"
